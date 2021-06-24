@@ -6,7 +6,11 @@ async function getMovieData() {
       `http://www.omdbapi.com/?t=${movie_title}&apikey=4bfcc3ab`
     );
     let data = await res.json();
-    showData(data);
+    if (data.Response != "False") {
+      showData(data);
+    } else {
+      errorData();
+    }
   } catch (e) {
     console.log(e);
   }
@@ -38,7 +42,14 @@ function showData(data) {
   cont.innerHTML = "";
   cont.appendChild(div);
 }
-
+function errorData() {
+  let div = document.createElement("div");
+  let img = document.createElement("img");
+  img.src = "https://archanaprojects.com/Frontend/images/not-found.png";
+  cont.innerHTML = "";
+  div.append(img);
+  cont.appendChild(div);
+}
 /*
 
 Actors: "Shah Rukh Khan, Kajol, Sheetal Menon"

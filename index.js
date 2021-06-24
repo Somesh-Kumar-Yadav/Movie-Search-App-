@@ -38,7 +38,14 @@ function showData(data) {
 
   let actors = document.createElement("p");
   actors.innerHTML = "Actors: " + data.Actors;
-  div.append(img, title, release, actors, rating);
+  let recommend = document.createElement("p");
+  if (Number(data.imdbRating) > 8.5) {
+    recommend.innerHTML = "RECOMMENDED";
+    recommend.style.margin = "10px";
+    recommend.style.color = "#bcbdc1";
+    recommend.style.background = "green";
+  }
+  div.append(recommend, img, title, release, actors, rating);
   cont.innerHTML = "";
   cont.appendChild(div);
 }
@@ -50,31 +57,3 @@ function errorData() {
   div.append(img);
   cont.appendChild(div);
 }
-/*
-
-Actors: "Shah Rukh Khan, Kajol, Sheetal Menon"
-Awards: "23 wins & 26 nominations"
-BoxOffice: "$4,018,771"
-Country: "India, United States, United Arab Emirates, Hong Kong"
-DVD: "25 Nov 2015"
-Director: "Karan Johar"
-Genre: "Drama"
-Language: "Hindi, English"
-Metascore: "50"
-Plot: "An Indian Muslim man with Asperger's syndrome takes a challenge to speak to the President of the United States seriously and embarks on a cross-country journey."
-Poster: "https://m.media-amazon.com/images/M/MV5BMTUyMTA4NDYzMV5BMl5BanBnXkFtZTcwMjk5MzcxMw@@._V1_SX300.jpg"
-Production: "Dharma Productions, Red Chillies Entertainment, Fox Searchlight"
-Rated: "PG-13"
-Ratings: (3) [{…}, {…}, {…}]
-Released: "12 Feb 2010"
-Response: "True"
-Runtime: "165 min"
-Title: "My Name Is Khan"
-Type: "movie"
-Website: "N/A"
-Writer: "Shibani Bathija, Niranjan Iyengar"
-Year: "2010"
-imdbID: "tt1188996"
-imdbRating: "8.0"
-imdbVotes: "101,013"
-*/
